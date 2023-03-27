@@ -1,4 +1,4 @@
-#ifdef ARDUINO_ARCH_ESP32
+#include <Arduino.h> 
 String sendATCommand(String command) {
   String response = "";
   bool configCommand = command.indexOf('?') == -1;
@@ -27,4 +27,3 @@ String readSerial2() {
   }
   return readed;
 }
-#endif

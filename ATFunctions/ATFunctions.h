@@ -1,4 +1,4 @@
-#ifdef ARDUINO_ARCH_ESP32
+#include <Arduino.h> 
 /**
  * @brief Send AT command to the module and return the response
  * 
@@ -11,4 +11,3 @@ String sendATCommand(String);
  * 
  */
 String readSerial2();
-#endif
