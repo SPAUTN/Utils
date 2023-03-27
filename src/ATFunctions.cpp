@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include "ATFunctions.h"
+#include "HexFunctions.h"
 
 String readSerial2() {
   String readed = "";
