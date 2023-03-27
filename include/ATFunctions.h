@@ -11,11 +11,13 @@
 #define AT_P2P_CONFIG_SET "AT+P2P=915000000:7:0:0:10:14"
 #define AT_P2P_CONFIG_GET "AT+P2P=?"
 #define AT_P2P_CONFIG_TX_SET "AT+PRECV=0" 
+
 /**
  * @brief Read the serial port 2 and return the response
  * 
  */
 String readSerial2();
+
 /**
  * @brief Send AT command to the module and return the response
  * 
