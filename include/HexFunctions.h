@@ -3,14 +3,14 @@
 /**
  * @brief Convert hex to ASCII
  * 
- * @param hex 
+ * @param hex string with the hex value
  * @return String 
  */
-String hexToASCII(String);
+String hexToASCII(String hex);
 /**
  * @brief Convert ASCII to hex
  * 
- * @param ascii 
+ * @param ascii string with the ASCII value
  * @return String 
  */
 String asciiToHex(String ascii);

@@ -22,14 +22,16 @@ String readSerial2();
 /**
  * @brief Send AT command to the module and return the response
  * 
- * @return String - Response from the module
+ * @param command String with the AT command
+ * @return String 
  */
-String sendATCommand(String);
+String sendATCommand(String command);
 
 /**
  * @brief Send P2P packet to the module and return the response
  * receive tha packet data in ascii format
  * 
+ * @param packet String with the packet data
  * @return String with the response from the module
  */
-String sendP2PPacket(String);
+String sendP2PPacket(String packet);
