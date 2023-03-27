@@ -33,6 +33,6 @@ String sendATCommand(String command) {
 }
 
 String sendP2PPacket(String packet) {
-  String response = sendATCommand(asciiToHex(AT_P2P_PSEND_HEADER + packet));
+  String response = sendATCommand(AT_P2P_PSEND_HEADER + asciiToHex(packet));
   return response;
 }
