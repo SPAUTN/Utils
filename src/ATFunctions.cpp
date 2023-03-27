@@ -29,3 +29,7 @@ String sendATCommand(String command) {
   return response;
 }
 
+String sendP2PPacket(String packet) {
+  String response = sendATCommand(asciiToHex(AT_P2P_PSEND_HEADER + packet));
+  return response;
+}
