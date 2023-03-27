@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include <stdio.h>
 
+#include "ATFunctions.h"
+
 String readSerial2() {
   String readed = "";
   while(Serial2.available()>0) {
