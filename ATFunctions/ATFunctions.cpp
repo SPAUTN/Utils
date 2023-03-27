@@ -1,4 +1,6 @@
-#include <Arduino.h> 
+#include <Arduino.h>
+#include <stdio.h>
+
 String sendATCommand(String command) {
   String response = "";
   bool configCommand = command.indexOf('?') == -1;
