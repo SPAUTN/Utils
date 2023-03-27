@@ -1,6 +1,15 @@
 #include <Arduino.h>
 #include <stdio.h>
 
+String readSerial2() {
+  String readed = "";
+  while(Serial2.available()>0) {
+    char c = Serial2.read();
+    Serial.print(c);
+    readed += c;
+  }
+  return readed;
+}
 String sendATCommand(String command) {
   String response = "";
   bool configCommand = command.indexOf('?') == -1;
@@ -20,12 +29,3 @@ String sendATCommand(String command) {
   return response;
 }
 
-String readSerial2() {
-  String readed = "";
-  while(Serial2.available()>0) {
-    char c = Serial2.read();
-    Serial.print(c);
-    readed += c;
-  }
-  return readed;
-}
