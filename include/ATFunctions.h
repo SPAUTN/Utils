@@ -17,7 +17,7 @@
  * @brief Read the serial port 2 and return the response
  * 
  */
-String readSerial2();
+String readSerial(Stream serialAT);
 
 /**
  * @brief Send AT command to the module and return the response
@@ -25,7 +25,7 @@ String readSerial2();
  * @param command String with the AT command
  * @return String 
  */
-String sendATCommand(String command);
+String sendATCommand(Stream serialAT, String command);
 
 /**
  * @brief Send P2P packet to the module and return the response
@@ -34,4 +34,4 @@ String sendATCommand(String command);
  * @param packet String with the packet data
  * @return String with the response from the module
  */
-String sendP2PPacket(String packet);
+String sendP2PPacket(Stream serialAT, String packet);

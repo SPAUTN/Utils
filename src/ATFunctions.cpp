@@ -4,27 +4,27 @@
 #include "ATFunctions.h"
 #include "HexFunctions.h"
 
-String readSerial2() {
+String readSerial(Stream serialAT) {
   String readed = "";
-  while(Serial2.available()>0) {
-    char c = Serial2.read();
-    Serial.print(c);
+  while(serialAT.available()>0) {
+    char c = serialAT.read();
+    serialAT.print(c);
     readed += c;
   }
   return readed;
 }
-String sendATCommand(String command) {
+String sendATCommand(Stream serialAT, String command) {
   String response = "";
   bool configCommand = command.indexOf('?') == -1;
   if(configCommand) {
     delay(1000);
   }
-  Serial2.flush();
-  Serial2.println();
-  Serial2.println(command);
+  serialAT.flush();
+  serialAT.println();
+  serialAT.println(command);
   delay(500);
-  Serial2.flush();
-  response = readSerial2();
+  serialAT.flush();
+  response = readSerial();
   if( !configCommand ) {
     response = response.substring(0, response.indexOf('\r'));
   }
@@ -32,7 +32,7 @@ String sendATCommand(String command) {
   return response;
 }
 
-String sendP2PPacket(String packet) {
-  String response = sendATCommand(AT_P2P_PSEND_HEADER + asciiToHex(packet));
+String sendP2PPacket(Stream serialAT, String packet) {
+  String response = sendATCommand(serialAT, AT_P2P_PSEND_HEADER + asciiToHex(packet));
   return response == "" ? "OK" : response;
 }
