@@ -4,7 +4,7 @@
 #include "ATFunctions.h"
 #include "HexFunctions.h"
 
-String readSerial(Stream serialAT) {
+String readSerial(Stream &serialAT) {
   String readed = "";
   while(serialAT.available()>0) {
     char c = serialAT.read();
@@ -13,7 +13,7 @@ String readSerial(Stream serialAT) {
   }
   return readed;
 }
-String sendATCommand(Stream serialAT, String command) {
+String sendATCommand(Stream &serialAT, String command) {
   String response = "";
   bool configCommand = command.indexOf('?') == -1;
   if(configCommand) {
@@ -32,7 +32,7 @@ String sendATCommand(Stream serialAT, String command) {
   return response;
 }
 
-String sendP2PPacket(Stream serialAT, String packet) {
+String sendP2PPacket(Stream &serialAT, String packet) {
   String response = sendATCommand(serialAT, AT_P2P_PSEND_HEADER + asciiToHex(packet));
   return response == "" ? "OK" : response;
 }

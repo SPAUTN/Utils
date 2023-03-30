@@ -16,22 +16,25 @@
 /**
  * @brief Read the serial port 2 and return the response
  * 
+ * @param serialAT Stream with the serial port
  */
-String readSerial(Stream serialAT);
+String readSerial(Stream &serialAT);
 
 /**
  * @brief Send AT command to the module and return the response
  * 
+ * @param serialAT Stream with the serial port
  * @param command String with the AT command
  * @return String 
  */
-String sendATCommand(Stream serialAT, String command);
+String sendATCommand(Stream &serialAT, String command);
 
 /**
  * @brief Send P2P packet to the module and return the response
  * receive tha packet data in ascii format
  * 
+ * @param serialAT Stream with the serial port
  * @param packet String with the packet data
  * @return String with the response from the module
  */
-String sendP2PPacket(Stream serialAT, String packet);
+String sendP2PPacket(Stream &serialAT, String packet);
