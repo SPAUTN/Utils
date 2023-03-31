@@ -15,6 +15,12 @@
 class ATFunctions {
     public:
         /**
+         * @brief Construct a new AT Functions object
+         * 
+         * @param serialAT Stream with the serial port
+         */
+        ATFunctions(Stream &serialAT);
+        /**
          * @brief Read the serial port 2 and return the response
          * 
          * @param serialAT Stream with the serial port
