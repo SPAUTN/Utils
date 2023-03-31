@@ -47,5 +47,5 @@ class ATFunctions {
         String sendP2PPacket(String packet);
 
     private:
-        Stream &serialAT;
+        Stream serialAT;
 };
