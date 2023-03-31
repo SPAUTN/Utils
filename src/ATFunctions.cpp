@@ -4,27 +4,31 @@
 #include "ATFunctions.h"
 #include "HexFunctions.h"
 
-String readSerial(Stream &serialAT) {
+ATFunctions::ATFunctions(Stream &serialAT) {
+  this->serialAT = serialAT;
+}
+
+ATFunctions::readSerial() {
   String readed = "";
-  while(serialAT.available()>0) {
-    char c = serialAT.read();
-    serialAT.print(c);
+  while(this->serialAT.available()>0) {
+    char c = this->serialAT.read();
+    this->serialAT.print(c);
     readed += c;
   }
   return readed;
 }
-String sendATCommand(Stream &serialAT, String command) {
+ATFunctions::sendATCommand(String command) {
   String response = "";
   bool configCommand = command.indexOf('?') == -1;
   if(configCommand) {
     delay(1000);
   }
-  serialAT.flush();
-  serialAT.println();
-  serialAT.println(command);
+  this->serialAT.flush();
+  this->serialAT.println();
+  this->serialAT.println(command);
   delay(500);
-  serialAT.flush();
-  response = readSerial(serialAT);
+  this->serialAT.flush();
+  response = readSerial(this->serialAT);
   if( !configCommand ) {
     response = response.substring(0, response.indexOf('\r'));
   }
@@ -32,7 +36,7 @@ String sendATCommand(Stream &serialAT, String command) {
   return response;
 }
 
-String sendP2PPacket(Stream &serialAT, String packet) {
-  String response = sendATCommand(serialAT, AT_P2P_PSEND_HEADER + asciiToHex(packet));
+ATFunctions::sendP2PPacket(String packet) {
+  String response = sendATCommand(AT_P2P_PSEND_HEADER + asciiToHex(packet));
   return response == "" ? "OK" : response;
 }

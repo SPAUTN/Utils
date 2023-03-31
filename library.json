@@ -1,6 +1,6 @@
 {
     "name": "Utils",
-    "version": "1.3.0",
+    "version": "2.3.0",
     "description": "Functions to manage and execute AT Commands between RAK3172 and ESP32 or ESP8266",
     "keywords": "AT, ATCommands, LoRa, ESP",
     "repository":

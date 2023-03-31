@@ -12,29 +12,34 @@
 #define AT_P2P_CONFIG_GET "AT+P2P=?"
 #define AT_P2P_CONFIG_TX_SET "AT+PRECV=0"
 #define AT_P2P_PSEND_HEADER "AT+PSEND="
+class ATFunctions {
+    public:
+        /**
+         * @brief Read the serial port 2 and return the response
+         * 
+         * @param serialAT Stream with the serial port
+         */
+        String readSerial();
 
-/**
- * @brief Read the serial port 2 and return the response
- * 
- * @param serialAT Stream with the serial port
- */
-String readSerial(Stream &serialAT);
+        /**
+         * @brief Send AT command to the module and return the response
+         * 
+         * @param serialAT Stream with the serial port
+         * @param command String with the AT command
+         * @return String 
+         */
+        String sendATCommand(String command);
 
-/**
- * @brief Send AT command to the module and return the response
- * 
- * @param serialAT Stream with the serial port
- * @param command String with the AT command
- * @return String 
- */
-String sendATCommand(Stream &serialAT, String command);
+        /**
+         * @brief Send P2P packet to the module and return the response
+         * receive tha packet data in ascii format
+         * 
+         * @param serialAT Stream with the serial port
+         * @param packet String with the packet data
+         * @return String with the response from the module
+         */
+        String sendP2PPacket(String packet);
 
-/**
- * @brief Send P2P packet to the module and return the response
- * receive tha packet data in ascii format
- * 
- * @param serialAT Stream with the serial port
- * @param packet String with the packet data
- * @return String with the response from the module
- */
-String sendP2PPacket(Stream &serialAT, String packet);
+    private:
+        Stream &serialAT;
+};
