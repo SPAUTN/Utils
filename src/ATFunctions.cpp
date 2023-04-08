@@ -24,7 +24,7 @@ String sendATCommand(Stream &serialAT, String command) {
   serialAT.println(command);
   delay(500);
   serialAT.flush();
-  response = readSerial();
+  response = readSerial(serialAT);
   if( !configCommand ) {
     response = response.substring(0, response.indexOf('\r'));
   }
