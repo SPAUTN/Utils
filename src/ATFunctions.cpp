@@ -8,8 +8,8 @@ String readSerial(Stream &serialAT) {
   String readed = "";
   while(serialAT.available()>0) {
     char c = serialAT.read();
-    serialAT.print(c);
     readed += c;
+    delay(5);
   }
   return readed;
 }
