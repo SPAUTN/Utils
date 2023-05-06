@@ -12,6 +12,11 @@
 #define AT_P2P_CONFIG_GET "AT+P2P=?"
 #define AT_P2P_CONFIG_TX_SET "AT+PRECV=0"
 #define AT_P2P_PSEND_HEADER "AT+PSEND="
+#define AT_CONTINUOUS_PRECV_CONFIG_SET "AT+PRECV=65534"     // 65534 for continuous receive
+#define AT_SEMICONTINUOUS_PRECV_CONFIG_SET "AT+PRECV=65535" // 65535 for continuous receive until one reception.
+
+// Instructions
+#define POLL "POLL"
 
 /**
  * @brief Read the serial port 2 and return the response
