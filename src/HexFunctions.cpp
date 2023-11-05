@@ -1,6 +1,6 @@
-#include <Arduino.h>
-#include <stdio.h>
-String hexToASCII(String hex) {
+#include "../include/HexFunctions.hpp"
+
+String HexFunctions::hexToASCII(String hex) {
   String ascii = "";
   for(int i=0; i<hex.length(); i+=2) {
     String ch = hex.substring(i, i+2);
@@ -10,7 +10,7 @@ String hexToASCII(String hex) {
   return ascii;
 }
 
-String asciiToHex(String ascii) {
+String HexFunctions::asciiToHex(String ascii) {
   String hex = "";
   for(int i=0; i<ascii.length(); i++) {
     char c = ascii.charAt(i);

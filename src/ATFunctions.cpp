@@ -1,19 +1,17 @@
-#include <Arduino.h>
-#include <stdio.h>
+#include "../include/ATFunctions.hpp"
 
-#include "ATFunctions.h"
-#include "HexFunctions.h"
-
-String readSerial(Stream &serialAT) {
+String ATFunctions::readSerial(Stream &serialAT) {
   String readed = "";
   while(serialAT.available()>0) {
     char c = serialAT.read();
     readed += c;
     delay(5);
   }
+  readed.trim();
   return readed;
 }
-String sendATCommand(Stream &serialAT, String command) {
+
+String ATFunctions::sendATCommand(Stream &serialAT, String command) {
   String response = "";
   bool configCommand = command.indexOf('?') == -1;
   if(configCommand) {
@@ -32,7 +30,7 @@ String sendATCommand(Stream &serialAT, String command) {
   return response;
 }
 
-String sendP2PPacket(Stream &serialAT, String packet) {
-  String response = sendATCommand(serialAT, AT_P2P_PSEND_HEADER + asciiToHex(packet));
+String ATFunctions::sendP2PPacket(Stream &serialAT, String packet) {
+  String response = sendATCommand(serialAT, AT_P2P_PSEND_HEADER + this->hexFunctions.asciiToHex(packet));
   return response == "" ? "OK" : response;
 }
