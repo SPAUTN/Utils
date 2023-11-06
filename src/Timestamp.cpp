@@ -15,3 +15,15 @@ String Timestamp::getLocalTimeStamp() {
   
   return timeString;
 }
+
+String Timestap::getHours() {
+  return getLocalTimeStamp().substring(11,13);
+}
+
+String Timestamp::getMinutes() {
+  return getLocalTimeStamp().substring(14,16);
+}
+
+String Timestamp::getSeconds() {
+  return getLocalTimeStamp().substring(18,19);
+}
