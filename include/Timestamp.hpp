@@ -7,6 +7,7 @@
 class Timestamp {
     public:
     String getLocalTimeStamp();
+    String getDay();
     String getHours();
     String getMinutes();
     String getSeconds();

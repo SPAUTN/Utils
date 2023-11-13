@@ -16,7 +16,11 @@ String Timestamp::getLocalTimeStamp() {
   return timeString;
 }
 
-String Timestap::getHours() {
+String Timestamp::getDay() {
+  return this -> getLocalTimeStamp().substring(8,10);
+}
+
+String Timestamp::getHours() {
   return this -> getLocalTimeStamp().substring(11,13);
 }
 
